@@ -2061,15 +2061,6 @@ input, select, textarea {
     width: 100%;
 }
 
-/* Au survol desktop, active l’overlay sur les thumbs */
-.image.thumb:hover:before {
-    background: url("images/overlay.png");
-    opacity: 1;
-}
-.image.thumb:hover:after {
-    opacity: 1;
-}
-
 		.image.thumb {
 			text-align: center;
 		}
@@ -2082,6 +2073,7 @@ input, select, textarea {
 				border-radius: 0.35em;
 				border: solid 3px rgba(255, 255, 255, 0.5);
 				color: #fff;
+				
 				display: inline-block;
 				font-size: 0.8em;
 				font-weight: 400;
@@ -2096,24 +2088,6 @@ input, select, textarea {
 				top: 50%;
 				white-space: nowrap;
 			}
-
-			.image.thumb:hover:after { 
-    opacity: 1.0;
-}
-
-.image.thumb:hover:before {
-    background: url("images/overlay.png");
-    opacity: 1.0;
-}
-
-/* -------- Désactiver l’overlay sur mobile -------- */
-@media (max-width: 768px) {
-    .image.thumb:before,
-    .image.thumb:after {
-        display: none !important;
-        content: none !important;
-    }
-}
 
 		.image img {
 			border-radius: 0.35em;
