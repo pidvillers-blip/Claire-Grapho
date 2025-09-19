@@ -2044,22 +2044,31 @@ input, select, textarea {
 		position: relative;
 	}
 
-		.image:before {
-			-moz-transition: opacity 0.2s ease-in-out;
-			-webkit-transition: opacity 0.2s ease-in-out;
-			-ms-transition: opacity 0.2s ease-in-out;
-			transition: opacity 0.2s ease-in-out;
-			background: url("images/overlay.png");
-			border-radius: 0.35em;
-			content: '';
-			display: block;
-			height: 100%;
-			left: 0;
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
+		.image:not(.thumb):before {
+    -moz-transition: opacity 0.2s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    background: url("images/overlay.png");
+    border-radius: 0.35em;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/* Au survol desktop, active l’overlay sur les thumbs */
+.image.thumb:hover:before {
+    background: url("images/overlay.png");
+    opacity: 1;
+}
+.image.thumb:hover:after {
+    opacity: 1;
+}
 
 		.image.thumb {
 			text-align: center;
@@ -2073,7 +2082,6 @@ input, select, textarea {
 				border-radius: 0.35em;
 				border: solid 3px rgba(255, 255, 255, 0.5);
 				color: #fff;
-				content: 'Voir';
 				display: inline-block;
 				font-size: 0.8em;
 				font-weight: 400;
@@ -2089,14 +2097,23 @@ input, select, textarea {
 				white-space: nowrap;
 			}
 
-			.image.thumb:hover:after {
-				opacity: 1.0;
-			}
+			.image.thumb:hover:after { 
+    opacity: 1.0;
+}
 
-			.image.thumb:hover:before {
-				background: 
-				opacity: 0;
-			}
+.image.thumb:hover:before {
+    background: url("images/overlay.png");
+    opacity: 1.0;
+}
+
+/* -------- Désactiver l’overlay sur mobile -------- */
+@media (max-width: 768px) {
+    .image.thumb:before,
+    .image.thumb:after {
+        display: none !important;
+        content: none !important;
+    }
+}
 
 		.image img {
 			border-radius: 0.35em;
@@ -2433,9 +2450,9 @@ input, select, textarea {
 
 			table.alt thead {
 				border-bottom: 0;
-			}
+			
 
-			table.alt tfoot {
+}			table.alt tfoot {
 				border-top: 0;
 			}
 
